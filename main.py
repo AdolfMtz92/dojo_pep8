@@ -1,18 +1,27 @@
 from codebreaker import Codebreaker
 
-intentos_totales = 10
-codebreaker = Codebreaker()
+INTENTOS_TOTALES = 10
 
-intento = 0
+def jugar_codebreaker():
+    """
+    Función principal que ejecuta el juego Codebreaker.
+    """
+    true_number = "1010"  # Define el número verdadero aquí
+    codebreaker = Codebreaker(true_number)
+    intento = 0
 
-print('Jugar Codebreaker!')
+    print('Jugar Codebreaker!')
 
-while intento != intentos_totales:
-   number = input('Numero:');
-   resolve = codebreaker.adivinar(number)
-   print(resolve)
-   if resolve == True:
-      print('You win!!')
-      break
+    while intento < INTENTOS_TOTALES:
+        number = input('Número: ')
+        resolve = codebreaker.adivinar(number)
+        print(resolve)
+        if resolve:
+            print('¡Ganaste!')
+            break
+        intento += 1
+    else:
+        print('Agotaste tus intentos. Perdiste.')
 
-
+if __name__ == '__main__':
+    jugar_codebreaker()
